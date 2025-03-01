@@ -4,53 +4,102 @@ import App from "./App";
 import "./main.css";
 
 
-function calculateSum(a, b) {
+// ✅ Exact Duplicates
+function addNumbers(a: number, b: number): number {
     return a + b;
 }
 
-function computeTotal(x, y) {
-    return x + y;
+function sumValues(x: number, y: number): number {
+    return x + y; // 🔴 Same as addNumbers
 }
 
-function fetchData() {
-    let data = [];
-    for (let i = 0; i < 10; i++) {
-        data.push(i);
-    }
-    return data;
+// ✅ Highly Similar Functions (Different Names, Same Logic)
+function multiplyNumbers(a: number, b: number): number {
+    return a * b;
 }
 
-function getAPIData() {
-    let result = [];
-    for (let j = 0; j < 10; j++) {
-        result.push(j);
+function productOfValues(x: number, y: number): number {
+    return x * y; // 🟡 Very similar to multiplyNumbers
+}
+
+// ✅ Slightly Modified Logic (Partial Similarity)
+function computeTotal(a: number, b: number): number {
+    return (a + b) * 2; // Similar to addNumbers but slightly different
+}
+
+// ✅ Unique Functions (Completely Different Logic)
+function fetchUserData(userId: string): void {
+    console.log(`Fetching data for user: ${userId}`);
+}
+
+function logMessage(message: string): void {
+    console.log(`Log: ${message}`);
+}
+
+// ✅ Anonymous Function (Cannot be Named)
+const squareNumber = function (num: number): number {
+    return num * num;
+};
+
+// ✅ Similar Functions with Extra Steps
+function getUserInfo(userId: string): void {
+    let data = `User-${userId}`;
+    console.log(`Data Retrieved: ${data}`);
+}
+
+function retrieveUserDetails(userID: string): void {
+    let info = `User-${userID}`;
+    console.log(`Information: ${info}`); // 🟡 Slight variation
+}
+
+// ✅ Loops & Conditions (Complex Similarity)
+function processOrders(orders: number[]): number {
+    let total = 0;
+    for (let order of orders) {
+        total += order;
     }
+    return total;
+}
+
+function handleTransactions(transactions: number[]): number {
+    let sum = 0;
+    for (let t of transactions) {
+        sum += t;
+    }
+    return sum; // 🔴 Almost identical to processOrders
+}
+
+// ✅ Different Code Style but Same Logic
+function computeSum(a: number, b: number): number {
+    let result = a + b;
     return result;
 }
 
-
-function processUsers(users) {
-    let processed = [];
-    for (let user of users) {
-        processed.push(user.name.toUpperCase());
-    }
-    return processed;
+function calculateTotal(a: number, b: number): number {
+    let total = a + b;
+    return total; // 🔴 Practically the same as computeSum
 }
 
-function processProducts(products) {
-    let result = [];
-    for (let product of products) {
-        result.push(product.price * 2);
-    }
-    return result;
+// ✅ More Complex Logic with Variations
+function checkEligibility(age: number, income: number): boolean {
+    return age >= 18 && income > 50000;
 }
 
-function logMessage(message) {
-    console.log("Message:", message);
+function isEligibleForLoan(age: number, salary: number): boolean {
+    return age >= 18 && salary > 50000; // 🟡 Very similar to checkEligibility
 }
 
-function generateRandomNumber() {
+// ✅ Different Functionality
+function generateRandomNumber(): number {
     return Math.floor(Math.random() * 100);
+}
+
+function formatDate(date: Date): string {
+    return date.toISOString().split("T")[0];
+}
+
+function sendNotification(user: string, message: string): void {
+    console.log(`Notification sent to ${user}: ${message}`);
 }
 
 
