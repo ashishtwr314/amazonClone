@@ -3,55 +3,56 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./main.css";
 
-function shortFunction() {
-    console.log("This is a short function.");
-    return 42;
+
+function calculateSum(a, b) {
+    return a + b;
 }
 
-function longFunction() {
-    console.log("This function is too long.");
-    let sum = 0;
+function computeTotal(x, y) {
+    return x + y;
+}
+
+function fetchData() {
+    let data = [];
     for (let i = 0; i < 10; i++) {
-        sum += i;
-        console.log(sum);
+        data.push(i);
     }
-    console.log("Still running...");
-    console.log("This function should be refactored.");
-    console.log("Consider breaking it into smaller functions.");
-    console.log("It exceeds the recommended 10 lines.");
-    console.log("Refactor this!");
-    console.log("End of long function.");
-    return sum;
+    return data;
 }
 
-function deeplyNestedFunction() {
-    if (true) {
-        if (true) {
-            if (true) {
-                if (true) { // Nesting Level 4
-                    console.log("This function is deeply nested.");
-                }
-            }
-        }
+function getAPIData() {
+    let result = [];
+    for (let j = 0; j < 10; j++) {
+        result.push(j);
     }
+    return result;
 }
 
-const arrowFunction = () => {
-    console.log("This is an arrow function.");
-};
 
-const longAndNested = function () {
-    console.log("Starting function...");
-    let count = 0;
-    for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
-            if (i === j) {
-                console.log("Nested too much!"); // Nesting Level 3
-            }
-        }
+function processUsers(users) {
+    let processed = [];
+    for (let user of users) {
+        processed.push(user.name.toUpperCase());
     }
-    console.log("Function complete.");
-};
+    return processed;
+}
+
+function processProducts(products) {
+    let result = [];
+    for (let product of products) {
+        result.push(product.price * 2);
+    }
+    return result;
+}
+
+function logMessage(message) {
+    console.log("Message:", message);
+}
+
+function generateRandomNumber() {
+    return Math.floor(Math.random() * 100);
+}
+
 
 
 
