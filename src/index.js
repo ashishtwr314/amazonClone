@@ -3,102 +3,120 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./main.css";
 
+function processUserOrders(orders) {
+    let total = 0;
+    let discount = 0;
 
-// ✅ Exact Duplicates
-function addNumbers(a: number, b: number): number {
+    if (orders.length > 0) {
+        for (let order of orders) {
+            total += order.amount;
+            
+            if (order.amount > 100) {
+                discount += order.amount * 0.1;
+            }
+
+            function applyTax(amount) {
+                return amount * 1.15;
+            }
+
+            total = applyTax(total);
+        }
+    }
+
+    console.log(`Total after discount: ${total - discount}`);
+    return total - discount;
+}
+
+function analyzeTransactions(transactions) {
+    let summary = {};
+
+    for (let txn of transactions) {
+        if (!summary[txn.type]) {
+            summary[txn.type] = 0;
+        }
+        summary[txn.type] += txn.amount;
+
+        function logTransaction() {
+            console.log(`Transaction Type: ${txn.type}, Amount: ${txn.amount}`);
+        }
+
+        logTransaction();
+    }
+
+    return summary;
+}
+
+function addNumbers(a, b) {
     return a + b;
 }
 
-function sumValues(x: number, y: number): number {
-    return x + y; // 🔴 Same as addNumbers
+function sumValues(x, y) {
+    return x + y;
 }
 
-// ✅ Highly Similar Functions (Different Names, Same Logic)
-function multiplyNumbers(a: number, b: number): number {
+function multiplyNumbers(a, b) {
     return a * b;
 }
 
-function productOfValues(x: number, y: number): number {
-    return x * y; // 🟡 Very similar to multiplyNumbers
+function productOfValues(x, y) {
+    return x * y;
 }
 
-// ✅ Slightly Modified Logic (Partial Similarity)
-function computeTotal(a: number, b: number): number {
-    return (a + b) * 2; // Similar to addNumbers but slightly different
+function computeTotal(a, b) {
+    return (a + b) * 2;
 }
 
-// ✅ Unique Functions (Completely Different Logic)
-function fetchUserData(userId: string): void {
+function fetchUserData(userId) {
     console.log(`Fetching data for user: ${userId}`);
 }
 
-function logMessage(message: string): void {
-    console.log(`Log: ${message}`);
-}
-
-// ✅ Anonymous Function (Cannot be Named)
-const squareNumber = function (num: number): number {
+const squareNumber = function (num) {
     return num * num;
 };
 
-// ✅ Similar Functions with Extra Steps
-function getUserInfo(userId: string): void {
-    let data = `User-${userId}`;
-    console.log(`Data Retrieved: ${data}`);
-}
-
-function retrieveUserDetails(userID: string): void {
-    let info = `User-${userID}`;
-    console.log(`Information: ${info}`); // 🟡 Slight variation
-}
-
-// ✅ Loops & Conditions (Complex Similarity)
-function processOrders(orders: number[]): number {
+function handlePayments(payments) {
     let total = 0;
-    for (let order of orders) {
-        total += order;
+    for (let p of payments) {
+        total += p.amount;
     }
     return total;
 }
 
-function handleTransactions(transactions: number[]): number {
+function processInvoices(invoices) {
     let sum = 0;
-    for (let t of transactions) {
-        sum += t;
+    for (let i of invoices) {
+        sum += i.amount;
     }
-    return sum; // 🔴 Almost identical to processOrders
+    return sum;
 }
 
-// ✅ Different Code Style but Same Logic
-function computeSum(a: number, b: number): number {
+function computeSum(a, b) {
     let result = a + b;
     return result;
 }
 
-function calculateTotal(a: number, b: number): number {
+function calculateTotal(a, b) {
     let total = a + b;
-    return total; // 🔴 Practically the same as computeSum
+    return total;
 }
 
-// ✅ More Complex Logic with Variations
-function checkEligibility(age: number, income: number): boolean {
+function checkEligibility(age, income) {
     return age >= 18 && income > 50000;
 }
 
-function isEligibleForLoan(age: number, salary: number): boolean {
-    return age >= 18 && salary > 50000; // 🟡 Very similar to checkEligibility
+function isEligibleForLoan(age, salary) {
+    return age >= 18 && salary > 50000;
 }
 
-// ✅ Different Functionality
-function generateRandomNumber(): number {
+function generateRandomNumber() {
     return Math.floor(Math.random() * 100);
 }
 
-function formatDate(date: Date): string {
+function formatDate(date) {
     return date.toISOString().split("T")[0];
 }
 
-function sendNotification(user: string, message: string): void {
+function sendNotification(user, message) {
     console.log(`Notification sent to ${user}: ${message}`);
 }
 
